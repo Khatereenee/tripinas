@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 
-export class LoginPage {
+export class SigninPage {
   // Locators
   public readonly emailInput: Locator;
   public readonly passwordInput: Locator;
@@ -14,6 +14,7 @@ export class LoginPage {
 
   // Actions
   async navigateTo(): Promise<void> {
+    await this.page.context().clearCookies();
     await this.page.goto('http://localhost:5173/sign-in');
   }
 
@@ -38,7 +39,7 @@ export class LoginPage {
 
   // Assertions
   async verifyPageLoaded(): Promise<void> {
-    await expect(this.emailInput).toBeVisible();
+    await expect(this.emailInput).toBeVisible({timeout: 10000});
   }
 
   async verifyLoginSuccessful(expectedUrl: string = 'http://localhost:5173/dashboard'): Promise<void> {

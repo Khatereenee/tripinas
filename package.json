@@ -8,9 +8,19 @@
     "start-be": "npm --workspace backend start",
     "test": "npx playwright test",
     "login-test": "npx playwright test tests/features/login.spec.ts --project chromium",
-    "login-test-ui": "npx playwright test tests/features/login.spec.ts --project chromium -ui",
+    "login-test-ui": "npx playwright test tests/features/login.spec.ts --project chromium --ui",
     "registration-test": "npx playwright test tests/features/registration.spec.ts --project chromium",
-    "registration-test-ui": "npx playwright test tests/features/registration.spec.ts --project chromium -ui"
+    "registration-test-ui": "npx playwright test tests/features/registration.spec.ts --project chromium --ui",
+
+    
+    "codegen": "npx playwright codegen http://localhost:5173/sign-in",
+    "test:signin": "npx playwright test tests/features/signin.spec.ts --project chromium",
+    "test:signinPOM": "npx playwright test tests/features/signinPOM.spec.ts --project chromium"
+    
+
+
+
+
   },
   "repository": {
     "type": "git",

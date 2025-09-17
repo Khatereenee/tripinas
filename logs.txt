@@ -1,0 +1,39 @@
+INSTALLATION/ PPREPARATION?
+
+Fork then sync/ create a repo branch (cath-dev)
+create parent directory (Testfolio)
+Open cmd (check file directory and make sure you are inside your parent directory)
+    run git clone https://github.com/regie2197/tripinas.git
+        cd tripinas
+        git pull origin cath-dev
+        git checkout cath-dev
+        git branch (shows cath-dev)
+        git status
+        git remote -v
+Open the tripinas folder in VSCode
+    Open terminal
+        run cd frontend
+            npm install
+            npm i -D react-router-dom
+    open new terminal
+        run npm install (to intall PW dependencies inside the package.json)
+
+
+Before creating test files
+Open terminal ( to make sure that localhost is running)
+    run cd frontend
+        npm run dev
+
+Create signin.spec.ts
+run npm run codegen
+
+
+
+
+{
+    "fullName": "John Smith",
+    "username": "johnsmith1234",
+    "email": "johnsmith@gmail.com",
+    "password": "DemoUser@2025"
+  }
+

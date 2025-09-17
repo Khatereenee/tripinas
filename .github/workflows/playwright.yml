@@ -5,6 +5,12 @@ on:
   #   branches: [ main, master ]
   # pull_request:
   #   branches: [ main, master ]
+
+env:
+    TRIPINAS_USERNAME: ${{ secrets.TRIPINAS_USERNAME }}
+    TRIPINAS_PASSWORD: ${{ secrets.TRIPINAS_PASSWORD }}
+
+
 jobs:
   test:
     timeout-minutes: 60

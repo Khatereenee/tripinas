@@ -1,18 +1,19 @@
 import { test as base, request } from '@playwright/test';
-import { LoginPage } from '@pages/LoginPage';
+import { SigninPage } from '@pages/SigninPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 
 
 
 type MyFixtures = {
-  loginPage: LoginPage;
+  signinPage: SigninPage;
   registrationPage: RegistrationPage;
 };
 
 export const test = base.extend<MyFixtures>({
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page));
+  signinPage: async ({ page }, use) => {
+    await use(new SigninPage(page));
   },
+  
   registrationPage: async ({ page }, use) => {
     await use(new RegistrationPage(page));
   },
