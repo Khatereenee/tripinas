@@ -7,8 +7,8 @@ import { attachScreenshot } from 'shared/helpers';
 import users from '../../test-data/users.json'; // Adjust the path as necessary
 
 
-const LOGIN_SUCCESS_SCREENSHOT = 'login_success_screenshot.png';
-const LOGIN_FAILURE_SCREENSHOT = 'login_failure_screenshot.png';
+const SIGNIN_SUCCESS_SCREENSHOT = 'signin_success_screenshot.png';
+const SIGNIN_FAILURE_SCREENSHOT = 'signin_failure_screenshot.png';
 
 
 
@@ -41,7 +41,7 @@ test.describe(`Signin Positive Tests with Profile Verification `, { tag: ['@Regr
                 await expect(page.getByTestId("user-email")).toContainText(process.env.TRIPINAS_APP_EMAIL!); 
             });
             await test.step('Screenshot -Successful Login', async () => {
-                await attachScreenshot(page, testInfo,LOGIN_SUCCESS_SCREENSHOT,); 
+                await attachScreenshot(page, testInfo,SIGNIN_SUCCESS_SCREENSHOT,); 
             });
         }); // End of test1
 
@@ -68,7 +68,7 @@ test.describe(`Signin Positive Tests with Profile Verification `, { tag: ['@Regr
             });
 
             await test.step('Screenshot -Successful Login', async () => {
-                await attachScreenshot(page, testInfo,LOGIN_SUCCESS_SCREENSHOT,); 
+                await attachScreenshot(page, testInfo,SIGNIN_SUCCESS_SCREENSHOT,); 
             });  
         }); // End of test2
     }); // End of users.forEach
@@ -83,7 +83,7 @@ test.describe(`Signin Negative Tests `, { tag: ['@RegressionTesting', '@Negative
 
         test(`Sign in as ${authUser.username} using wrong password `, async ({ signinPage, page }, testInfo) => { // Use the signinPage fixture
             
-            await test.step('Signin - Wrong Password', async () => {
+            await test.step('Signin - Correct Username but with Wrong Password', async () => {
                 await signinPage.login(process.env.TRIPINAS_APP_USERNAME!, 'wrong_password');
                 // await signinPage.login(authUser.email, 'wrong_password');
             });
@@ -93,19 +93,19 @@ test.describe(`Signin Negative Tests `, { tag: ['@RegressionTesting', '@Negative
             });
 
             //Locator - getByText('Password is incorrect. Try')
-            await test.step("Verify login error message", async () => {
+            await test.step("Verify signin error message", async () => {
                 await expect(page.getByText('Password is incorrect. Try')).toBeVisible();
                 await expect(page.locator('#error-password')).toContainText('Password is incorrect. Try again, or use another method.');
             });
 
             await test.step('Attach screenshot of failed login', async () => {
-                await attachScreenshot(signinPage.page,testInfo,LOGIN_FAILURE_SCREENSHOT,);
+                await attachScreenshot(signinPage.page,testInfo,SIGNIN_FAILURE_SCREENSHOT,);
             });
-        }); // End of test1
+        }); // End of test3
 
         test(`Sign in with Wrong Credentials`, async ({ signinPage, page }, testInfo) => { // Use the signinPage fixture
             
-            await test.step('Signin - wrong username email and password', async () => {
+            await test.step('Signin - wrong username', async () => {
                 await signinPage.login('wrong_username', 'wrong_password');
             });
 
@@ -113,26 +113,16 @@ test.describe(`Signin Negative Tests `, { tag: ['@RegressionTesting', '@Negative
                 await expect(page).toHaveURL(/.*sign-in/); 
             });
 
-            // //Locator - getByText('Password is incorrect. Try')
-            // await test.step("Verify login error message", async () => {
-            //     await expect(page.getByText('Password is incorrect. Try')).toBeVisible();
-            //     await expect(page.locator('#error-password')).toContainText('Password is incorrect. Try again, or use another method.');
-            // });
+            // //Locator - getByText('Couldn\'t find your account.')
+            await test.step("Verify signin error message", async () => {
+                await expect(page.getByText('Couldn\'t find your account.')).toBeVisible();
+                await expect(page.locator('#error-identifier')).toContainText('Couldn\'t find your account.');
+            });
 
             await test.step('Attach screenshot of failed login', async () => {
-                await attachScreenshot(signinPage.page,testInfo,LOGIN_FAILURE_SCREENSHOT,);
+                await attachScreenshot(signinPage.page,testInfo,SIGNIN_FAILURE_SCREENSHOT,);
             });
-        }); // End of test2
-
-
-
-
-
-
-
-
-
-
+        }); // End of test4
     }); // End of users.forEach
 }); // End of test.describe2
 

@@ -147,6 +147,8 @@ vite.config.ts.timestamp-*
 logs.txt
 .auth
 .env
-/test-data
+/test-data/users.json
 /tests/features/signin.spec.ts-snapshots/
 /tests/features/signinPOM.spec.ts-snapshots/
+/test-data/customers.json
+/tests/features/signup.spec.ts-snapshots/

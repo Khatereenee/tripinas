@@ -3,6 +3,8 @@
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
         "paths": {
             "@shared/*": ["shared/*"],
             "@pages/*": ["pages/*"],

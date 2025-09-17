@@ -15,11 +15,8 @@
     
     "codegen": "npx playwright codegen http://localhost:5173/sign-in",
     "test:signin": "npx playwright test tests/features/signin.spec.ts --project chromium",
-    "test:signinPOM": "npx playwright test tests/features/signinPOM.spec.ts --project chromium"
-    
-
-
-
+    "test:signinPOM": "npx playwright test tests/features/signinPOM.spec.ts --project chromium",
+    "test:signup": "npx playwright test tests/features/signup.spec.ts --project chromium"
 
   },
   "repository": {
