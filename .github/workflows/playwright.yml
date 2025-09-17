@@ -7,9 +7,12 @@ on:
   #   branches: [ main, master ]
 
 env:
-    TRIPINAS_USERNAME: ${{ secrets.TRIPINAS_USERNAME }}
-    TRIPINAS_PASSWORD: ${{ secrets.TRIPINAS_PASSWORD }}
-
+    TRIPINAS_APP_NAME: ${{ secrets.TRIPINAS_APP_NAME }}
+    TRIPINAS_APP_USERNAME: ${{ secrets.TRIPINAS_APP_USERNAME }}
+    TRIPINAS_APP_EMAIL: ${{ secrets.TRIPINAS_APP_EMAIL }} 
+    TRIPINAS_APP_PASSWORD: ${{ secrets.TRIPINAS_APP_PASSWORD }}
+    
+  
 
 jobs:
   test:
