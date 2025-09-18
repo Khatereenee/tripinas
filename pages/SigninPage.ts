@@ -42,7 +42,7 @@ export class SigninPage {
     await expect(this.emailInput).toBeVisible({timeout: 10000});
   }
 
-  async verifyLoginSuccessful(expectedUrl: string = 'http://localhost:5173/dashboard'): Promise<void> {
+  async verifySigninSuccessful(expectedUrl: string = 'http://localhost:5173/dashboard'): Promise<void> {
     await this.page.waitForURL(expectedUrl);
     await expect(this.page).toHaveURL(expectedUrl);
   }

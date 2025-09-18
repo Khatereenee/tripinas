@@ -144,6 +144,7 @@ vite.config.ts.timestamp-*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/tests/features/draft.spec.ts
 logs.txt
 .auth
 .env

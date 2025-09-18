@@ -6,29 +6,34 @@ on:
   # pull_request:
   #   branches: [ main, master ]
 
-env:
-    TRIPINAS_APP_NAME: ${{ secrets.TRIPINAS_APP_NAME }}
-    TRIPINAS_APP_USERNAME: ${{ secrets.TRIPINAS_APP_USERNAME }}
-    TRIPINAS_APP_EMAIL: ${{ secrets.TRIPINAS_APP_EMAIL }} 
-    TRIPINAS_APP_PASSWORD: ${{ secrets.TRIPINAS_APP_PASSWORD }}
-    
-  
+
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    
+    
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
+    - name: Debug ENV
+      run: |
+        echo "TRIPINAS_APP_NAME=${TRIPINAS_APP_NAME}"
+        echo "TRIPINAS_APP_USERNAME=${TRIPINAS_APP_USERNAME}"
+        echo "TRIPINAS_APP_EMAIL=${TRIPINAS_APP_EMAIL}"
+        echo "TRIPINAS_APP_PASSWORD=${TRIPINAS_APP_PASSWORD}"
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

@@ -1,0 +1,10 @@
+[
+  {
+    "firstName": "Juan",
+    "lastName": "Cruz",
+    "userName": "juancruz1234",
+    "email": "juancruz@gmail.com",
+    "password": "2DemoCustomer@2025N",
+    "expectedError": "That username is taken. Please try another."
+  }
+]
